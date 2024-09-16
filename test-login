@@ -1,0 +1,18 @@
+const puppeteer = require('puppeteer');
+const scrapeJobs = require('./scrapeJobs'); // Update with the correct path to your file
+
+(async () => {
+  const browser = await puppeteer.launch({
+    headless: false, // Set to true to run in the background
+    // executablePath: '/path/to/your/chrome', // Optional: specify the path to your Chrome installation if needed
+  });
+
+  const page = await browser.newPage();
+
+  // Call the scrapeJobs function and pass the page object
+  const jobs = await scrapeJobs(page);
+
+  console.log('Scraped Jobs:', jobs); // Output the scraped jobs to the console
+
+  await browser.close();
+})();
