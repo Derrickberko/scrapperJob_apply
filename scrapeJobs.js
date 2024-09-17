@@ -6,7 +6,8 @@ module.exports = async function scrapeJobs(page) {
   await page.goto('https://app.joinhandshake.com/jobs')
 
     // Wait for the job listing elements to be visible on the page
-    await page.waitForSelector('.job-listing');
+    
+    await page.waitForSelector('.sso-button');
 
      // Use $$eval to evaluate a function in the context of the page
   const jobListings = await page.$$eval('.job-listing', listings => {
