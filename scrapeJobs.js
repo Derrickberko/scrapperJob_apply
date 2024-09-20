@@ -3,11 +3,14 @@ module.exports = async function scrapeJobs(page) {
   const jobs =[]
 
   //navigate to the job listings
-  await page.goto('https://app.joinhandshake.com/jobs')
+  await page.goto('https://app.joinhandshake.com/stu/postings')
+  await page.waitForSelector('#3fba69f9-4fbe-417d-b206-f02332a8016b-input');
+    await page.type('.sc-ewvfha daEcKH', 'Information Technology Internship');
+  
 
     // Wait for the job listing elements to be visible on the page
     
-    await page.waitForSelector('.sso-button');
+    await page.waitForSelector('.link-badge-container');
 
      // Use $$eval to evaluate a function in the context of the page
   const jobListings = await page.$$eval('.job-listing', listings => {

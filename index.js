@@ -1,7 +1,7 @@
 // Creaating variables 
 //this is a library used to control the browser
 const puppeteer = require('puppeteer')
-//a variabl to handle the login
+//a variable to handle the login
 const login = require('./login')
 //scrapping the jobs
 const scrapeJobs = require('./scrapeJobs')
@@ -11,8 +11,8 @@ const applyJobs = require('./applyJobs')
 const scheduleler = require('./scheduleler')
 
 (async () =>{
-  const brower = await puppeteer.launch({headless:false});
-  const page = await brower.newPage();
+  const browser = await puppeteer.launch({headless:false});
+  const page = await browser.newPage();
 
   //Log in to handshake
   await login(page)
@@ -24,5 +24,5 @@ const scheduleler = require('./scheduleler')
   for(const job of jobs){
     await applyJobs(page, job.link)
   }
-  await brower.close()
+  await browser.close()
 })
